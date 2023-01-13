@@ -14,14 +14,26 @@ const gurajada = "gurajada, arial, sans-serif";
 const sofia = "'Sofia Sans Extra Condensed', arial, sans-serif";
 
 // IMAGE LINKS
-const logoOpaceBG = "./pics/logo_opace-bg.png";
-const logoWhiteBG = "./pics/logo.jpg";
+const logoIMG = "./pics/logo.jpg";
 const linkedinIcon = "./pics/linkedin.jpg";
 const githubIcon = "./pics/github.jpg";
 const facebookIcon = "./pics/facebook.jpg";
 const instagramIcon = "./pics/instagram.jpg";
 const twitterIcon = "./pics/twitter.jpg";
 const profilePic = "./pics/profilepic.jpg";
+
+// SIZES, WIDTHS AND HEIGHTS
+const headerHeigth = "80px";
+const fullSiteWidth = "100vw";
+const halfSite = 40;
+const halfSiteWidth = halfSite + "vw";
+const picHeigth = halfSite / 1.8 + "vw";
+const itemMarginTop = "5vw";
+
+// BODY ELEMENT
+let body = document.body;
+body.style.margin = "0";
+body.style.padding = "0";
 
 // MAIN DIV
 let main = document.getElementById("main");
@@ -33,7 +45,7 @@ main.style.alignItems = "center";
 function logo() {
   let logoContainer = document.createElement("div");
   let logo = document.createElement("img");
-  logo.src = logoWhiteBG;
+  logo.src = logoIMG;
   logo.alt = "logo for christian riis - web designer";
   logo.style.height = "81px";
   logoContainer.className = "logocontainer";
@@ -61,8 +73,8 @@ function nav() {
   for (let i = 0; i < navItemsArray.length; i++) {
     let item = navItemsArray[i];
     item.textContent = navItemsArrayStrings[i];
-    item.style.fontFamily = cutive;
     item.style.color = white;
+    item.style.fontFamily = cutive;
     item.style.fontSize = "1.5rem";
     item.style.marginLeft = "3vw";
     navContainer.appendChild(item);
@@ -113,8 +125,8 @@ function header() {
   header.style.display = "flex";
   header.style.flexDirection = "row";
   header.style.justifyContent = "space-between";
-  header.style.width = "100vw";
-  header.style.height = "14vh";
+  header.style.width = fullSiteWidth;
+  header.style.height = headerHeigth;
   header.style.borderBottom = "1px solid black";
   header.style.backgroundColor = blue;
   header.appendChild(logo());
@@ -126,8 +138,8 @@ function header() {
 function pic() {
   let pic = document.createElement("div");
   pic.className = "profilepic";
-  pic.style.width = "42.5vw";
-  pic.style.height = "27.5vw";
+  pic.style.width = halfSiteWidth;
+  pic.style.height = picHeigth;
   pic.style.backgroundImage = `url(${profilePic})`;
   pic.style.backgroundSize = "cover";
   pic.style.border = "1px solid black";
@@ -142,9 +154,9 @@ function pitch() {
   pitch.style.display = "flex";
   pitch.style.flexDirection = "column";
   pitch.style.alignItems = "center";
-  pitch.style.width = "42.5vw";
-  pitch.style.height = "27.5vw";
-  pitch.style.marginLeft = "2.5vw";
+  pitch.style.width = halfSiteWidth;
+  pitch.style.minHeight = picHeigth;
+  pitch.style.border = "1px solid black";
 
   let name = document.createElement("h1");
   name.textContent = "Christian Tørre Riis";
@@ -189,18 +201,88 @@ function about() {
   about.className = "about";
   about.style.display = "flex";
   about.style.flexDirection = "row";
+  about.style.justifyContent = "space-evenly";
   about.style.alignItems = "center";
   about.style.height = "auto";
-  about.style.width = "90vw";
-  about.style.marginTop = "5vw";
-  about.style.padding = "10px 0";
+  about.style.width = fullSiteWidth;
+  about.style.marginTop = itemMarginTop;
   about.appendChild(pic());
   about.appendChild(pitch());
+}
+
+// EXPERIENCE CONTENT LEFT - WORK
+function work() {
+  let work = document.createElement("div");
+  work.className = "work";
+  work.style.height = "300px";
+  work.style.width = halfSiteWidth;
+  work.style.border = "2px solid red";
+  return work;
+}
+
+// EXPERIENCE CONTENT LEFT - EDUCATION
+function education() {
+  let education = document.createElement("div");
+  return education;
+}
+
+// BUILD EXP LEFT
+function expLeft() {
+  let expLeft = document.createElement("div");
+  expLeft.style.minHeight = "300px";
+  expLeft.appendChild(work());
+  expLeft.appendChild(education());
+  return expLeft;
+}
+
+// EXPERIENCE CONTENT RIGHT - SKILLS
+function skills() {
+  let skills = document.createElement("div");
+  skills.className = "skills";
+  skills.style.width = halfSiteWidth;
+  skills.style.minHeight = "300px";
+  skills.style.border = "2px solid darkgreen";
+  return skills;
+}
+
+// BUILD EXPERIENCE
+function experience() {
+  let exp = document.createElement("div");
+  main.appendChild(exp);
+  exp.className = "experience";
+  exp.style.width = fullSiteWidth;
+  exp.style.display = "flex";
+  exp.flexDirection = "row";
+  exp.style.justifyContent = "space-evenly";
+  exp.style.marginTop = itemMarginTop;
+  exp.appendChild(expLeft());
+  exp.appendChild(skills());
+  return exp;
+}
+
+// PROJECTS CONTAINER
+
+// PROJECTS BUTTON
+
+// BUILD PROJECTS
+function projects() {
+  let projects = document.createElement("div)");
+  main.appendChild(projects);
+  projects.className = "projects";
+  projects.style.width = fullSiteWidth;
+  projects.style.minHeight = "300px";
+  projects.style.marginTop = marginTop;
+  projects.style.display = "flex";
+  projects.style.flexDirection = "column";
+  projects.style.border = "2px solid blue";
+  return projects;
 }
 
 // BUILD SITE
 function buildSite() {
   header();
   about();
+  experience();
+  projects();
 }
 buildSite();
