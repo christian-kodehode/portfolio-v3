@@ -114,7 +114,7 @@ function header() {
   header.style.flexDirection = "row";
   header.style.justifyContent = "space-between";
   header.style.width = "100vw";
-  header.style.height = "80px";
+  header.style.height = "14vh";
   header.style.borderBottom = "1px solid black";
   header.style.backgroundColor = blue;
   header.appendChild(logo());
@@ -122,7 +122,7 @@ function header() {
   header.appendChild(socMed());
 }
 
-// BUILD ABOUT CONTENT - PERSONAL PICTURE
+// ABOUT CONTENT - PERSONAL PICTURE
 function pic() {
   let pic = document.createElement("div");
   pic.className = "profilepic";
@@ -135,6 +135,7 @@ function pic() {
   return pic;
 }
 
+// ABOUT CONTENT - PITCH
 function pitch() {
   let pitch = document.createElement("div");
   pitch.className = "pitch";
@@ -168,7 +169,7 @@ function pitch() {
     "På fritiden ser jeg mye på fotball og annen sport, og jeg liker å reise og å lage mat.",
   ];
 
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 4; i++) {
     let text = document.createElement("p");
     text.textContent = pitchArray[i];
     pitch.appendChild(text);
